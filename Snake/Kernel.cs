@@ -277,8 +277,7 @@ namespace Snake
 
         public void printLogo()
         {
-            Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
-            Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
+            Console.Write("\n\n\n\n\n\n\n\n\n\n");
             Console.WriteLine("  #####                                 #######  #####  ");
             Console.WriteLine(" #     # #    #   ##   #    # ######    #     # #     # ");
             Console.WriteLine(" #       ##   #  #  #  #   #  #         #     # #       ");
@@ -287,20 +286,19 @@ namespace Snake
             Console.WriteLine(" #     # #   ## #    # #   #  #         #     # #     # ");
             Console.WriteLine("  #####  #    # #    # #    # ######    #######  #####  ");
             Console.WriteLine("                                  by Denis Bartashevich");
-            Console.WriteLine("");
+            Console.Write("\n");
 
         }
 
         protected override void BeforeRun()
         {
-            Console.WriteLine("Cosmos booted successfully. Type a line of text to get it echoed back.");
+            Console.Clear();
+            printLogo();
+            Console.Write("Welcome to SnakeOS, write 'snake' to start the game: ");
         }
 
         protected override void Run()
-        {
-            Console.Clear();
-            printLogo();
-            Console.Write("Welcome to SnakeOS, write snake to start the game: ");
+        {  
             switch (Console.ReadLine())
             {
                 case "snake":
@@ -382,8 +380,14 @@ namespace Snake
                         }
                     }
                     break;
+                case "help":
+                    Console.WriteLine(@"
+-- COMMANDS -+- INFO
+   
+   snake        runs the snake game
+   help         displays this information");
                 default:
-                    Console.WriteLine("Wrong option.");
+                    Console.WriteLine("Unrecongised command");
                     break;
             }
         }
